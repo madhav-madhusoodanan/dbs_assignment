@@ -7,45 +7,49 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 )
 
-func (api *API) GetStudent(ctx *gin.Context) {
+func (api *API) GetCourses(ctx *gin.Context) {
 
 	// gives me all the courses that a strudent has registered for 
-	var student StudentPreference
+	var student Student
 	err := ctx.BindJSON(&student)
 	if err != nil {
 		log.Println(err)
 	}
 	
-	rows, err := api.Db.Query("call substi_crs(?, ?, ?)", student.ID, student.OldCourse, student.NewCourse)
+	rows, err := api.Db.Query("call CrsDetails(?)", student.ID)
 	if err != nil {
 		log.Println(err)
 		return
 	}
 
-	courses := []Course{}
+	courses := []RealCourse{}
 	for rows.Next() {
 
 		// find out what are the columns of the table being returned
-		var CourseID string 
-		var StudentID string 
+		var courseName string 
+		var _avail int 
+		var credits int
+		var id int
+		var _tot int 
 
-		err2 := rows.Scan(&CourseID, &StudentID)
-		if err2 != nil {
+		err := rows.Scan(&courseName, &_avail, &credits, &id, &_tot)
+		if err != nil {
 			ctx.JSON(500, gin.H {
 				"error": "no records found",
 			})
 			continue
 		}
 
-		crs := Course{
-			CourseID: CourseID,
-			StudentID: StudentID,
+		crs := RealCourse{
+			CourseID: id,
+			Credits: credits,
+			CourseName: courseName,
 		}
 		courses = append(courses, crs)
 	}
 	var msg struct {
 		Message string `json:"message"`
-		Data []Course `json:"data"`
+		Data []RealCourse `json:"data"`
 	}
 	msg.Message = "success"
 	msg.Data = courses

@@ -8,19 +8,19 @@ import TakenCourse from "./components/TakenCourse.vue"
 // import axios from "./components/axios.js"
 const StudentID = ref("")
 const TotalCourses = ref([
-    { id: "1", course: "lmaoo", units: 4 },
-    { id: "2", course: "lmaoo", units: 4 },
-    { id: "3", course: "lmaoo", units: 4 },
-    { id: "4", course: "lmaoo", units: 4 },
-    { id: "5", course: "lmaoo", units: 4 },
-    { id: "6", course: "lmaoo", units: 4 },
+    { course_id: "1", course_name: "lmaoo", credits: 4 },
+    { course_id: "2", course_name: "lmaoo", credits: 4 },
+    { course_id: "3", course_name: "lmaoo", credits: 4 },
+    { course_id: "4", course_name: "lmaoo", credits: 4 },
+    { course_id: "5", course_name: "lmaoo", credits: 4 },
+    { course_id: "6", course_name: "lmaoo", credits: 4 },
 ])
 
 const TakenCourses = ref([
-    { id: "11", course: "lmaoo", units: 4 },
-    { id: "12", course: "lmaoo", units: 4 },
-    { id: "13", course: "lmaoo", units: 4 },
-    { id: "14", course: "lmaoo", units: 4 },
+    { course_id: "11", course_name: "lmaoo",credits: 4 },
+    { course_id: "12", course_name: "lmaoo",credits: 4 },
+    { course_id: "13", course_name: "lmaoo",credits: 4 },
+    { course_id: "14", course_name: "lmaoo",credits: 4 },
 ])
 
 const TotalUnits = ref(0)
@@ -28,10 +28,10 @@ const oldId = ref(-1)
 
 const onSubstitute = (oldId, newID) => {
     const oldIndex = TotalCourses.value.findIndex(
-        (course) => course.id === oldId
+        (course) => course.course_id === oldId
     )
     const newIndex = TotalCourses.value.findIndex(
-        (course) => course.id === newID
+        (course) => course.course_id === newID
     )
     const oldCourse = TotalCourses.value[oldIndex]
     const newCourse = TotalCourses.value[newIndex]

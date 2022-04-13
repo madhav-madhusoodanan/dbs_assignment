@@ -11,14 +11,14 @@ func main() {
 
 	student := server.Group("/read")
 	{
-		student.POST("/course", controllers.GetCourse)
-		student.POST("/student", controllers.GetStudent)
+		student.POST("/course", controllers.GetStudentCount)
+		student.POST("/student", controllers.GetCourses)
 	}
 	
 	edit := server.Group("/edit")
 	{
 		edit.POST("/add", controllers.AddCourse)
-		edit.POST("/remove", controllers.SubstituteCourse)
+		edit.POST("/substi", controllers.SubstituteCourse)
 	}
 
 	/* port, exists := os.LookupEnv("PORT")

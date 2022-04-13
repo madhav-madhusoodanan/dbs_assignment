@@ -17,12 +17,12 @@ func Substitute(ctx *gin.Context) {
 	Database.SubstituteCourse(ctx)
 }
 
-func GetCourse(ctx *gin.Context) {
+func GetCourses(ctx *gin.Context) {
 		// get the courses that are available
-	Database.GetCourse(ctx)
+	Database.GetCourses(ctx)
 }
 
-func GetStudent(ctx *gin.Context) {
+func GetStudentCount(ctx *gin.Context) {
 		// get the students that are available
-	Database.GetStudent(ctx)
+	Database.GetStudentCount(ctx)
 }

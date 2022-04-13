@@ -7,7 +7,7 @@ import (
 
 func New() API {
 	var api API
-	db, err := sql.Open("mysql", "user:password@/dbname")
+	db, err := sql.Open("mysql", "root:m4m4n5s1@tcp(127.0.0.1:3306)/ass")
 	if err != nil {
 		panic(err)
 	}

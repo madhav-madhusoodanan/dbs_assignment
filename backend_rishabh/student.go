@@ -11,8 +11,16 @@ type Course struct {
 	CourseID string `json:"course_id"`
 }
 
+type RealCourse struct {
+	CourseID int `json:"course_id"`
+	CourseName string `json:"course_name"`
+	Credits int `json:"credits"`
+}
+
 type Student struct {
 	ID string `json:"id"`
-	Name string `json:"name"`
-	Password string `json:"password"`
+}
+
+type CourseID struct {
+	CourseID string `json:"course_id"`
 }

@@ -36,6 +36,7 @@ func (api *API) AddCourse(ctx *gin.Context) {
 		ctx.JSON(200, gin.H {
 			"status": true,
 		})
+		// break
 
 	}
 	
