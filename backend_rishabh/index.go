@@ -7,17 +7,18 @@ import (
 func main() {
 	gin.SetMode(gin.ReleaseMode)
 	server := gin.Default()
+	Interface := New()
 
 	read := server.Group("/read")
 	{
-		read.POST("/student", GetStudentCount)
-		read.POST("/course", GetCourses)
+		read.POST("/student", Interface.GetStudentCount)
+		read.POST("/course", Interface.GetCourses)
 	}
 	
 	write := server.Group("/edit")
 	{
-		write.POST("/add", Add)
-		write.POST("/substitute", Substitute)
+		write.POST("/add", Interface.AddCourse)
+		write.POST("/substitute", Interface.SubstituteCourse)
 	}
 
 	server.Run(":8000")

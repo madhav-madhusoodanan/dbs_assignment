@@ -7,6 +7,7 @@ import (
 	"log"
 
 	"github.com/gin-gonic/gin"
+	_ "github.com/go-sql-driver/mysql"
 )
 
 type API struct {
@@ -15,7 +16,7 @@ type API struct {
 
 func New() API {
 	var api API
-	db, err := sql.Open("mysql", "user:password@/dbname")
+	db, err := sql.Open("mysql", "root:password@tcp(127.0.0.1:3306)/dbname")
 	if err != nil {
 		panic(err)
 	}

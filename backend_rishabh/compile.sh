@@ -1,1 +1,1 @@
-go build server.go
+go build index.go
